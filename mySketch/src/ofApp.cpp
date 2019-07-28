@@ -1,4 +1,6 @@
 #include "ofApp.h"
+using namespace ofxCv;
+using namespace cv;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -19,6 +21,13 @@ void ofApp::setup(){
     
     ofTrueTypeFont::setGlobalDpi(144);
     ledCountText.load("Impact.ttf", 50);
+    
+    //camera
+#ifdef _USE_LIVE_VIDEO
+    //vidGrabber.setVerbose(true);
+    vidGrabber.initGrabber(widthImage, heightImage);
+#endif
+    capturedImage.allocate(widthImage,heightImage);
 }
 
 //--------------------------------------------------------------
@@ -27,16 +36,29 @@ void ofApp::update(){
         serial.writeByte(Byte(1));
     }
     IsSendData=0;
+    
+    //camera
+#ifdef _USE_LIVE_VIDEO
+    bool bNewFrame=false;
+    vidGrabber.update();//vidGrabber.grabFrame();はエラー
+    bNewFrame=vidGrabber.isFrameNew();
+#endif
+    
+    if(bNewFrame){
+#ifdef _USE_LIVE_VIDEO
+        capturedImage.setFromPixels(vidGrabber.getPixels().getData(),widthImage,heightImage);//~0.8.4 : getPixels(), 0.9.x~ : getPixels().getData()
+        capturedImage.mirror(false, true);//画像を反転
+#endif
+    }
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(0, 0, 0);
-    
-    gui.draw();
-    
+    capturedImage.draw(0,0);
     ledCountText.drawString("ledCount: " + ofToString(ledCount), 300, 100);
-    
+    gui.draw();
 }
 
 //--------------------------------------------------------------

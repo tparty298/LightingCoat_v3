@@ -2,6 +2,10 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxCv.h"
+#include "ofxOpenCv.h"
+
+#define _USE_LIVE_VIDEO
 
 class ofApp : public ofBaseApp{
 
@@ -22,6 +26,13 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
+    //camera
+    ofVideoGrabber vidGrabber;
+    ofxCvColorImage capturedImage;
+    int widthImage=1280;
+    int heightImage=720;
+    
+    //serial
     ofSerial serial;
     
     ofxPanel gui;
