@@ -15,7 +15,10 @@ void ofApp::setup(){
     
     ofBackground(0,0,0);
     gui.setup();
-    gui.add(number_LED.setup("number_LED",1,0,1000));
+    gui.add(number_LED.setup("number_LED",170,0,1000));
+    
+    ofTrueTypeFont::setGlobalDpi(144);
+    ledCountText.load("Impact.ttf", 50);
 }
 
 //--------------------------------------------------------------
@@ -28,12 +31,18 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    ofBackground(0, 0, 0);
+    
     gui.draw();
+    
+    ledCountText.drawString("ledCount: " + ofToString(ledCount), 300, 100);
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if(key == 's'){
+        ledCount++;
         IsSendData=1;
     }
     

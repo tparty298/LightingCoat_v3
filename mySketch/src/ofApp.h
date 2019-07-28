@@ -26,6 +26,8 @@ class ofApp : public ofBaseApp{
     
     ofxPanel gui;
     ofxIntSlider number_LED;
+    int ledCount=0;
+    ofTrueTypeFont ledCountText;
     
     int IsSendData=0;
 };

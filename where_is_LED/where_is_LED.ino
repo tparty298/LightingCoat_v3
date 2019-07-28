@@ -1,6 +1,6 @@
 #include <Adafruit_NeoPixel.h>
 #define PININIT        2
-#define NUMPIXELS      100
+#define NUMPIXELS      170
 #define BRIGHTNESS     255
 int readByte = 0;
 int ledCount = 0;
@@ -17,7 +17,7 @@ void setup(){
 }
 
 void loop(){
-  if(ledCount<NUMPIXELS){
+  if(ledCount>=NUMPIXELS){
     Serial.println("end");
   }else if (Serial.available() > 0) {
     readByte = Serial.read();
@@ -28,7 +28,7 @@ void loop(){
       for(int i=0;i<NUMPIXELS;i++){
         p1.setPixelColor(i, p1.Color(0,0,0));
       }
-      p1.setPixelColor(ledCount, p1.Color(0,0,0));
+      p1.setPixelColor(ledCount, p1.Color(255,0,0));
       p1.show();
       ledCount++;
     }
