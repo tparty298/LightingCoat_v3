@@ -25,8 +25,7 @@ class ofApp : public ofBaseApp{
     ofSerial serial;
     
     ofxPanel gui;
-    ofxIntSlider hoge;
+    ofxIntSlider number_LED;
     
-    unsigned char hoge_int;
     int IsSendData=0;
 };

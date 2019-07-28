@@ -15,17 +15,15 @@ void ofApp::setup(){
     
     ofBackground(0,0,0);
     gui.setup();
-    gui.add(hoge.setup("hogehoge",1,0,10));
+    gui.add(number_LED.setup("number_LED",1,0,1000));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    hoge_int=hoge;
     if(IsSendData){
-        serial.writeByte(Byte(hoge_int));
-        serial.writeByte(hoge_int);
+        serial.writeByte(Byte(1));
     }
-
+    IsSendData=0;
 }
 
 //--------------------------------------------------------------
