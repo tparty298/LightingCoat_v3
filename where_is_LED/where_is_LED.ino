@@ -1,6 +1,6 @@
 #include <Adafruit_NeoPixel.h>
 #define PININIT        2
-#define NUMPIXELS      170
+#define NUMPIXELS      300
 #define BRIGHTNESS     255
 int readByte = 0;
 int ledCount = 0;
@@ -8,6 +8,7 @@ Adafruit_NeoPixel p1=Adafruit_NeoPixel(NUMPIXELS, PININIT, NEO_GRB + NEO_KHZ800)
 
 void setup(){
   Serial.begin(9600);
+  Serial.println("start");
   p1.begin();
   p1.setBrightness(BRIGHTNESS);
   for(int i=0;i<NUMPIXELS;i++){
