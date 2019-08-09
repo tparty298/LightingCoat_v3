@@ -142,6 +142,8 @@ void ofApp::draw(){
             std::cout<<average_x<<","<<average_y<<std::endl;
         }
     }
+
+    
     loopCount++;
 }
 
@@ -183,12 +185,13 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+    exportFile<<average_x<<","<<average_y<<"\n";
+    std::cout<<average_x<<","<<average_y<<std::endl;
 }
 
 //--------------------------------------------------------------

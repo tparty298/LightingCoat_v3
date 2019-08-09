@@ -85,7 +85,8 @@ void ofApp::draw(){
             int valV_index=pixelColorRGB_index.getBrightness();
             for(int i=0;i<LED_NUM;i++){
                 if((x==LED_pos[i][0])&&(y==LED_pos[i][1])){
-                    std::cout<<valR_index<<","<<valG_index<<","<<valB_index<<std::endl;
+                    //std::cout<<valR_index<<","<<valG_index<<","<<valB_index<<std::endl;
+                    std::cout<<x<<","<<y<<"\n";
                     outputFile<<valR_index<<","<<valG_index<<","<<valB_index<<"\n";
                 }
             }
