@@ -4,8 +4,14 @@
 #include <string.h>
 #include <unistd.h>
 
-#define WIDTH 830
-#define HEIGHT 1260
+//#define WIDTH 830
+//#define HEIGHT 1260
+
+#define WIDTH 450
+#define HEIGHT 650
+
+#define CLOTH_IMAGE_WIDTH 415
+#define CLOTH_IMAGE_HEIGHT 630
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
@@ -33,7 +39,7 @@ void ofApp::update(){
 void ofApp::draw(){
     ofSetColor(255);
     cloth_image.resize(415,630);
-    cloth_image.draw(400,50);
+    cloth_image.draw(20,10);
     
     ledCountText.drawString("ledCount: " + ofToString(ledCount), 50, 100);
     ofSetColor(255,0,0);

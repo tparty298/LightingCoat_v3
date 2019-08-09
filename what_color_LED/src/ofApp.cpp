@@ -7,8 +7,14 @@
 #include <string>
 #include <sstream>
 
-#define WIDTH 1280
-#define HEIGHT 720
+
+//#define WIDTH 1280
+//#define HEIGHT 720
+
+#define WIDTH 450
+#define HEIGHT 650
+
+
 //動画の変換は以下のようなコマンド
 //ffmpeg -i motion.mov -pix_fmt yuv420p motion.mp4
 //連番画像の生成
@@ -40,7 +46,7 @@ void ofApp::setup(){
     inputMovie.setLoopState(OF_LOOP_NORMAL);
     inputMovie.play();
     
-    nowScreen.allocate(1280,720,OF_IMAGE_COLOR);
+    nowScreen.allocate(WIDTH,HEIGHT,OF_IMAGE_COLOR);
     
 }
 
