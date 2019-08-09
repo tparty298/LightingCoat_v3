@@ -26,7 +26,7 @@ void ofApp::setup(){
     //csv
     ofSetLogLevel("ofxCsv",OF_LOG_VERBOSE);
     //CSVファイルの読み込み
-    if(inputCsv.load("export.csv")){
+    if(inputCsv.load("cloth_export.csv")){
         std::cout<<"csvファイルをエクスポートします"<<std::endl;
         for(int i=0;i<inputCsv.getNumRows();i++){
             ofxCsvRow row=inputCsv[i];
@@ -73,20 +73,20 @@ void ofApp::draw(){
     
     unsigned char *nowScreen_data = nowScreen.getPixels().getData();
     //全ピクセル探索
-    for(int y=0;y<HEIGHT;y++){//なんでここに3を掛けないといけないは分からない
-        for(int x=0;x<WIDTH;x++){
-            int index=y*WIDTH+x;
-            int valR_index=nowScreen.getPixels().getData()[index*3];
-            int valG_index=nowScreen.getPixels().getData()[index*3+1];
-            int valB_index=nowScreen.getPixels().getData()[index*3+2];
-            ofColor pixelColorRGB_index(valR_index,valG_index,valB_index);
-            int valH_index=pixelColorRGB_index.getHue();
-            int valS_index=pixelColorRGB_index.getSaturation();
-            int valV_index=pixelColorRGB_index.getBrightness();
-            for(int i=0;i<LED_NUM;i++){
+    for(int i=0;i<LED_NUM;i++){
+        for(int y=0;y<HEIGHT;y++){
+            for(int x=0;x<WIDTH;x++){
+                int index=y*WIDTH+x;
+                int valR_index=nowScreen.getPixels().getData()[index*3];
+                int valG_index=nowScreen.getPixels().getData()[index*3+1];
+                int valB_index=nowScreen.getPixels().getData()[index*3+2];
+                ofColor pixelColorRGB_index(valR_index,valG_index,valB_index);
+                int valH_index=pixelColorRGB_index.getHue();
+                int valS_index=pixelColorRGB_index.getSaturation();
+                int valV_index=pixelColorRGB_index.getBrightness();
                 if((x==LED_pos[i][0])&&(y==LED_pos[i][1])){
                     //std::cout<<valR_index<<","<<valG_index<<","<<valB_index<<std::endl;
-                    std::cout<<x<<","<<y<<"\n";
+                    //std::cout<<x<<","<<y<<"\n";
                     outputFile<<valR_index<<","<<valG_index<<","<<valB_index<<"\n";
                 }
             }
