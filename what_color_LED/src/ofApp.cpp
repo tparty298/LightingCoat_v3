@@ -73,6 +73,7 @@ void ofApp::draw(){
     
     unsigned char *nowScreen_data = nowScreen.getPixels().getData();
     //全ピクセル探索
+    /*
     for(int i=0;i<LED_NUM;i++){
         for(int y=0;y<HEIGHT;y++){
             for(int x=0;x<WIDTH;x++){
@@ -91,6 +92,14 @@ void ofApp::draw(){
                 }
             }
         }
+    }
+     */
+    for(int i=0;i<LED_NUM;i++){
+        int index=LED_pos[i][1]*WIDTH+LED_pos[i][0];
+        int valR_index=nowScreen.getPixels().getData()[index*3];
+        int valG_index=nowScreen.getPixels().getData()[index*3+1];
+        int valB_index=nowScreen.getPixels().getData()[index*3+2];
+        outputFile<<valR_index<<","<<valG_index<<","<<valB_index<<"\n";
     }
     outputFile<<-1<<","<<-1<<","<<-1<<"\n";
     
